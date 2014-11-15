@@ -62,6 +62,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.VCAP_APP_PORT || 3000);
 
 module.exports = app;
