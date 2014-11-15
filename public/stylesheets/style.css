@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+body {
+  padding: 10px 50px;
+  font-family: 'Lobster', 微软雅黑, cursive, Helvetica, Arial, sans-serif;
+}
+
+h1{
+	font-weight: 400; 
+}
+
+.mainbody{
+	margin: 30px 0px;
+	min-height: 400px;
+}
+
+
+.img{
+	float: left;
+	width: 25%;
+}
+
+.img img{
+	width: 255px;
+	height: 255px;
+	overflow: hidden;
+}
+
+.step{
+	width: 100%;
+	line-height: 40px;
+}
+.step label{
+	display: inline-block;
+	width: 250px;
+}
+
+.step input[type='button'], .step input[type='submit']{
+	width: 70px;
+}
+
+.clear{
+	clear: both;
+}
+
+.image{
+	width: 255px;
+	height: 255px;
+	border: 1px dashed gray;
+	background-color: #eff;
+}
+
+.inst{
+	float: left;
+	width: 50%;
+}
+

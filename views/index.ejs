@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'/>
+	<link href='/stylesheets/style.css' rel='stylesheet'/>
+	<script src='/javascripts/jquery.min.js'></script>
+	<script src='/javascripts/global.js'></script>
+	<title>Watermarking Factory</title>
+</head>
+<body>
+	<h1>Watermarking Factory</h1>
+
+	<p>Add your own watermark to the images to protect your copyright.</p>
+
+	<div class="mainbody">
+		<div class="instruction">
+			<div class="inst">
+				<h2>Add watermark</h2>
+				<form id="images" action="/upload" method="post" name='images' enctype="multipart/form-data" onsubmit="check12();">
+					<div class="step">
+						<label for="img">Step 1: Choose a image.</label>
+						<input id="img" name="img" type="file" class="input" required="required"/>
+					</div>
+					<div class="step">
+						<label for="submit">Step 2: Choose a watermark.</label>
+						<input id="img2" name="img2" type="file" class="input" required="required"/>
+					</div>
+					<div class="step">
+						<label for="submit">Step 3: Click Submit button.</label>
+						<input id="submit" name="submit" type="submit" value="Submit" class="input"/>
+					</div>
+				</form>
+				<form id="marktform" action="/addmark" method="post" name='marktform' enctype="multipart/form-data" onsubmit="check3();">
+					<div class="step">
+						<label for="mark">Step 4: Click Mark button.</label>
+						<input id="mark" name="mark" type="submit" value="Mark"class="input"/>
+					</div>
+				</form>
+			</div>
+			<div class="inst">
+				<h2>Extract watermark</h2>
+				<form id="upload2" action="/upload2" method="post" name='upload2' enctype="multipart/form-data" onsubmit="check3();">
+					<div class="step">
+						<label for="extract">Step 1: Upload a image to be tested.</label>
+						<input id="img3" name="img3" type="file" required="required" class="input"/>
+					</div>	
+					<div class="step">
+						<label for="submit">Step 2: Click Submit button.</label>
+						<input id="submit2" name="submit2" type="submit" value="Submit" class="input"/>
+					</div>
+				</form>			
+				<form id="extractform" action="/extract" method="post" name='extractform' enctype="multipart/form-data" onsubmit="check4();">
+					<div class="step">
+						<label for="extract">Step 2: Click Extract button.</label>
+						<input id="extract" name="extract" type="submit" value="Extract" class="input"/>
+					</div>	
+				</form>		
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="column">
+			<div class="img">
+				<p>Original image</p>
+				<div class="image" id="img1">
+				<!-- <img src="/images/image.png" /> -->
+				</div>
+			</div>			
+			<div class="img">
+				<p>Watermark image</p>
+				<div class="image" id="img1">
+				<!-- <img src="/images/mark.png" /> -->
+				</div>
+			</div>
+			<div class="img">
+				<p>Watermarked image</p>
+				<div class="image" id="img3">
+				<!-- <img src="/images/marked.png" /> -->
+				</div>
+			</div>
+			<div class="img">
+				<p>Extracted watermark</p>
+				<div class="image" id="img4">
+				<!-- <img src="/images/remark.png" /> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<br/><br/>
+	<div class="footer">
+		<span>
+			Copyright © Liang Shuailong. 2014 DAM Course Homework3. Digital Media Technology. Zhejiang University. 
+		</span>
+		<span>
+			Contact: zju_shuailong@163.com
+		</span>
+	</div>	
+</body>
+</html>
+
