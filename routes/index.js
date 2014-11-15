@@ -15,13 +15,13 @@ router.get('/', function (req, res) {
 /* Add watermark to image */
 router.post('/addmark', function (req, res) {
 	watermark.addMark();
-	res.redirect('/');
+	res.send('success');
 });
 
 /* Extract watermark from image */
 router.post('/extract', function (req, res) {
 	watermark.getMark();
-	res.redirect('/');
+	res.send('success');
 });
 
 /*
@@ -32,7 +32,7 @@ router.post('/upload', function (req, res){
 	var form = new formidable.IncomingForm();
 
 	form.parse(req, function(err, fields, files) {
-		res.redirect('/');
+		res.send('success');
 	});
 
 	form.on('end', function(fields, files) {
@@ -58,7 +58,6 @@ router.post('/upload', function (req, res){
 			console.error(err);
 			}
 		});
-
 	});
 });
 
@@ -70,7 +69,7 @@ router.post('/upload2', function (req, res){
 	var form = new formidable.IncomingForm();
 
 	form.parse(req, function(err, fields, files) {
-		res.redirect('/');
+		res.send('success');
 	});
 
 	form.on('end', function(fields, files) {
