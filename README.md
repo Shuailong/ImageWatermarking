@@ -25,8 +25,9 @@ Liang Shuailong(@handsome)
 
 ###TODO
 1. Robust guarantee.
-1. Support image of size other than 255*255(by resizing or croping).
-2. Support image formats other than PNG(by convert image format).
+2. Support image of size other than 255*255(by resizing or croping).
+3. Support image formats other than PNG(by convert image format).
+4. Improve watermarking algorithm.
 
 
 ###Preview
