@@ -14,7 +14,7 @@ Watermark Factory is a simple website to help you add your own watermark to your
 ###Issue
 1. Size is restricted to 255*255 for all image.
 2. Format of the image is restricted to PNG.
-3. Extracted watermark has only 4 grayscale although it is distinguishable.
+3. Extracted watermark has only 4 scales for each RGB channel although it is distinguishable.
 
 ###Technology
 - Server end: Nodejs(libs: express, ejs, formidable, gm, pngjs)
