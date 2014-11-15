@@ -3,7 +3,7 @@ var fs = require('fs'),
 	PNG = require('pngjs').PNG,
     events = require('events').EventEmitter;
 
-exports.addMark = function()
+exports.addMark = function(callback, res)
 {
 	var mark_mat = new Array();
 	for(var i = 0; i < 255; ++i){
@@ -26,7 +26,6 @@ exports.addMark = function()
                 mark_mat[i][j][2] = this.data[idx+2];
             }
         }
-
         fs.createReadStream('./public/images/image.png')
         .pipe(new PNG({
             filterType: 3
@@ -49,13 +48,19 @@ exports.addMark = function()
                     this.data[idx+2] |= mark_mat[i][j][2];
                 }
             }
-            this.pack().pipe(fs.createWriteStream('./public/images/marked.png'));
+            var data = this.pack();
+            var marked = fs.createWriteStream('./public/images/marked.png');
+            data.pipe(marked, {end: false});
+            data.on('end', function(){
+                marked.end();
+                callback(res);
+            });            
         });
-	});        
+	});
 }
 
 
-exports.getMark = function()
+exports.getMark = function(callback, res)
 {
 	/* Deprive watermark from marked marked img
 	   return watermark */
@@ -77,6 +82,12 @@ exports.getMark = function()
                 this.data[idx+2] *= 85;
             }
         }
-        this.pack().pipe(fs.createWriteStream('./public/images/remark.png'));
+        var data = this.pack();
+        var marked = fs.createWriteStream('./public/images/remark.png');
+        data.pipe(marked, {end: false});
+        data.on('end', function(){
+            marked.end();
+            callback(res);
+        });     
     });
 }

@@ -9,6 +9,9 @@ $(document).ready(function() {
                     $('#img1 img').load('/images/image.png');
                     $('#img2 img').load('/images/mark.png');
                 }
+                else{
+                    alert(response);
+                }
             }
         }); 
     });
@@ -20,6 +23,9 @@ $(document).ready(function() {
                 if(response == 'success') {
                     $('#img3').html('<img src="images/marked.png" />');
                     $('#img3 img').load('/images/marked.png');
+                }
+                else{
+                    alert(response);
                 }
             }
         }); 
@@ -33,6 +39,9 @@ $(document).ready(function() {
                     $('#img3').html('<img src="images/marked.png" />');
                     $('#img3 img').load('/images/marked.png');
                 }
+                else{
+                    alert(response);
+                }
             }
         }); 
     });
@@ -44,6 +53,9 @@ $(document).ready(function() {
                 if(response == 'success') {
                     $('#img4').html('<img src="images/remark.png" />');
                     $('#img4 img').load('/images/remark.png');
+                }
+                else{
+                    alert(response);
                 }
             }
         }); 

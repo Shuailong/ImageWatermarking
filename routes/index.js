@@ -12,80 +12,58 @@ router.get('/', function (req, res) {
 	res.render('index', {});
 });
 
+function callback(res)
+{
+	res.send('success');
+}
+
 /* Add watermark to image */
 router.post('/addmark', function (req, res) {
-	watermark.addMark();
-	res.send('success');
+	watermark.addMark(callback, res);
 });
 
 /* Extract watermark from image */
 router.post('/extract', function (req, res) {
-	watermark.getMark();
-	res.send('success');
+	watermark.getMark(callback, res);
 });
 
 /*
  * POST to get image and watermark.
  */
 router.post('/upload', function (req, res){
-
 	var form = new formidable.IncomingForm();
-
-	form.parse(req, function(err, fields, files) {
+	var imgs = [];
+	form.on('file', function(field, file){
+		imgs.push([field, file]);
+	})
+	.on('end', function() {
+		var uploaddir = 'public/images/';
+		if(imgs[0][0] == 'imgfile1'){
+			fs.copySync(imgs[0][1].path, uploaddir + 'image.png');
+			fs.copySync(imgs[1][1].path, uploaddir + 'mark.png');
+		}
+		else{
+			fs.copySync(imgs[1][1].path, uploaddir + 'image.png');
+			fs.copySync(imgs[0][1].path, uploaddir + 'mark.png');
+		}
 		res.send('success');
 	});
-
-	form.on('end', function(fields, files) {
-		/* Temporary location of our uploaded file */
-		var temp_path = this.openedFiles[0].path;		
-		/* The file name of the uploaded file */
-		var file_name = 'image.png';
-		
-		var temp_path2 = this.openedFiles[1].path;		
-		/* The file name of the uploaded file */
-		var file_name2 = 'mark.png';
-
-		/* Location where we want to copy the uploaded file */
-		var new_location = 'public/images/';
-
-		fs.copy(temp_path, new_location + file_name, function(err) {  
-			if (err) {
-			console.error(err);
-			}
-		});
-		fs.copy(temp_path2, new_location + file_name2, function(err) {  
-			if (err) {
-			console.error(err);
-			}
-		});
-	});
+	form.parse(req);
 });
 
 /*
  * POST to get watermarked image to be tested.
  */
 router.post('/upload2', function (req, res){
-
 	var form = new formidable.IncomingForm();
-
-	form.parse(req, function(err, fields, files) {
+	form.on('file', function(field, file){
+		var uploaddir = 'public/images/';
+		fs.copySync(file.path, uploaddir + 'marked.png');
+	})
+	.on('end', function(){
 		res.send('success');
 	});
-
-	form.on('end', function(fields, files) {
-		/* Temporary location of our uploaded file */
-		var temp_path = this.openedFiles[0].path;		
-		/* The file name of the uploaded file */
-		var file_name = 'marked.png';
-				/* Location where we want to copy the uploaded file */
-		var new_location = 'public/images/';
-
-		fs.copy(temp_path, new_location + file_name, function(err) {  
-			if (err) {
-			console.error(err);
-			}
-		});
-	});
+	form.parse(req);
 });
 
 

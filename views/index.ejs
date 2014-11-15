@@ -23,11 +23,11 @@
 				<form id="images" action="/upload" method="post" name='images' enctype="multipart/form-data">
 					<div class="step">
 						<label for="img">Step 1: Choose a image.</label>
-						<input id="imgfile1" name="img" type="file" class="input" required="required"/>
+						<input id="imgfile1" name="imgfile1" type="file" class="input" required="required" accept="image/png"/>
 					</div>
 					<div class="step">
 						<label for="submit">Step 2: Choose a watermark.</label>
-						<input id="imgfile2" name="img2" type="file" class="input" required="required"/>
+						<input id="imgfile2" name="imgfile2" type="file" class="input" required="required" accept="image/png"/>
 					</div>
 					<div class="step">
 						<label for="submit">Step 3: Click Submit button.</label>
@@ -46,7 +46,7 @@
 				<form id="upload2" action="/upload2" method="post" name='upload2' enctype="multipart/form-data">
 					<div class="step">
 						<label for="extract">Step 1: Upload a image to be tested.</label>
-						<input id="imgfile3" name="img3" type="file" required="required" class="input"/>
+						<input id="imgfile3" name="imgfile3" type="file" required="required" class="input" accept="image/png"/>
 					</div>	
 					<div class="step">
 						<label for="submit">Step 2: Click Submit button.</label>
@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="img">
-				<p>Extracted watermark</p>
+				<p>Extracted watermark</p> 
 				<div class="image" id="img4">
 				<!-- <img src="/images/remark.png" /> -->
 				</div>
